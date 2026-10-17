@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict');
+const C=require('../app/src/main/assets/clock.js');
+const now=Date.parse('2026-10-17T22:45:00Z');
+assert.deepEqual(C.parts(now,330),{hour:4,minute:15,day:'2026-10-18'});
+assert.deepEqual(C.parts(now,0),{hour:22,minute:45,day:'2026-10-17'});
+assert.deepEqual(C.parts(now,60),{hour:23,minute:45,day:'2026-10-17'});
+assert.deepEqual(C.parts(now,120),{hour:0,minute:45,day:'2026-10-18'});
+assert.deepEqual(C.convert(1200,330,0),{minutes:870,day:0});
+assert.deepEqual(C.convert(60,330,0),{minutes:1170,day:-1});
+assert.deepEqual(C.convert(1380,0,330),{minutes:270,day:1});
+assert.deepEqual(C.convert(1200,330,60),{minutes:930,day:0});
+assert.deepEqual(C.convert(1200,330,-60),{minutes:810,day:0});
+assert.deepEqual(C.convert(0,840,-720),{minutes:1320,day:-2});
+assert.equal(C.zone(-330),'UTC −05:30');
+assert.equal(C.zone(0),'UTC +00:00');
+assert.equal(C.zone(330),'UTC +05:30');
+console.log('13 clock assertions passed: India, ship advancements, reversals, day rollovers, conversion, and offset formatting.');

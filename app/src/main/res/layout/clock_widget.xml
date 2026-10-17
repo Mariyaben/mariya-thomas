@@ -1,0 +1,5 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/widget_root" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/widget_bg">
+ <TextView android:id="@+id/widget_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="THOMAS AT SEA  ♡" android:textColor="#74394F" android:textSize="12sp"/>
+ <TextClock android:id="@+id/widget_clock" android:layout_width="match_parent" android:layout_height="wrap_content" android:format12Hour="hh:mm a" android:format24Hour="HH:mm" android:textColor="#74394F" android:textSize="34sp"/>
+ <TextView android:id="@+id/widget_caption" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#936577" android:textSize="12sp"/>
+</LinearLayout>

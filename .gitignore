@@ -1,0 +1,15 @@
+/public/
+/.gradle/
+/app/build/
+/build/
+node_modules/
+.vercel/
+.openai/
+.env
+.env.*
+!.env.example
+local.properties
+*.jks
+*.keystore
+*.log
+.DS_Store
