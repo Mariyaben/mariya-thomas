@@ -5,3 +5,5 @@ body{font-family:'Segoe UI',sans-serif;background:var(--paper);transition:backgr
 @media(prefers-reduced-motion:reduce){body{transition:none}}
 
 body{padding-top:env(safe-area-inset-top)}header:has(#web-install:not([hidden]))>span.pill{display:none}nav{bottom:max(12px,env(safe-area-inset-bottom))}main{padding-bottom:calc(110px + env(safe-area-inset-bottom))}@supports(-webkit-touch-callout:none){input,textarea,#chat-input{font-size:16px!important}}
+
+.difference-fields{display:flex;gap:12px;margin-bottom:16px}.difference-fields label{flex:1}#difference-dialog label{font-size:12px}#difference-dialog input,#difference-dialog select{display:block;width:100%;padding:12px;margin-top:5px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:12px}#ship-sync-status{margin:12px 0 0;line-height:1.5}

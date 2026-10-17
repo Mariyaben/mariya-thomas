@@ -28,7 +28,11 @@ The result is `app/build/outputs/apk/debug/app-debug.apk`. This repository inclu
 
 India remains at UTC +05:30. Thomas starts at UTC +00:00, 5h 30m behind India. Use **+ 1 hour** when his ship advances and **− 1 hour** to reverse an adjustment. No automatic time-zone guesses. Keep the underlying phone clock accurate.
 
-Each device stores its own offset. After a ship adjustment, share a clock code from Settings and apply it on the other device. Chat does not automatically synchronize clock settings. Notes are also local until shared.
+Mariya remains fixed to IST. Thomas is stored as a difference from IST, starting **5h 30m behind**. The ±1-hour buttons adjust only his difference. **Set difference** corrects hours/minutes ahead or behind.
+
+Pair the phones once in Chat. Clock changes synchronize over the encrypted relay while the apps are open and online. Each device saves a versioned snapshot offline. Reconnecting requests the latest snapshot from the peer and announces its own. Stale and duplicate events cannot roll back newer updates; concurrent offline edits converge deterministically. If the relay cache has expired and the device with the newest update is closed, open that device too so it can share its saved snapshot. There is no background synchronization or durable cloud clock database.
+
+Both phones need version 1.2. This release migrates old local-only clock settings to the confirmed starting difference of 5h30 behind IST. Manual clock codes remain available as a fallback. Notes remain local until shared.
 
 ## Chat
 
@@ -52,7 +56,7 @@ python -m http.server 4173 --directory public
 
 Open `http://localhost:4173`. The Android assets in `app/src/main/assets` are the source of the web build. Run `npm run build` after editing them. HTTPS or localhost is required for Web Crypto and service workers.
 
-The tests cover clock offsets/day rollover and chat encryption/tamper detection. Optional hosted-relay test, using an encrypted synthetic message only:
+The tests cover clock offsets/day rollover, IST-relative ship time, encrypted two-client updates and reconnect recovery, and chat encryption/tamper detection. Optional hosted-relay test, using an encrypted synthetic message only:
 
 ```sh
 node tests/chat.test.cjs --live
